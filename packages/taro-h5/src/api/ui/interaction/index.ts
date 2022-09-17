@@ -291,7 +291,6 @@ const showActionSheet: typeof Taro.showActionSheet = async (options = { itemList
 }
 
 Taro.eventCenter.on('__taroRouterChange', () => {
-  hideToast()
   hideLoading()
   hideModal()
 })
