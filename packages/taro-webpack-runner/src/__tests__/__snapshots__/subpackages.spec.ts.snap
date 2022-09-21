@@ -4701,20 +4701,23 @@ exports[`subpackages should process subpackages 2`] = `
                             shouldLoad = true;
 
                           case 50:
-                            if (!(shouldLoad || stack.length < 1)) {
-                                _context.next = 59;
-                                break;
+                            if (shouldLoad || stack.length < 1) {
+                                el = (_g = element.default) !== null && _g !== void 0 ? _g : element;
+                                loadConfig = Object.assign({}, pageConfig);
+                                stacksIndex = stack.length;
+                                delete loadConfig[\\"path\\"];
+                                delete loadConfig[\\"load\\"];
+                                page = undefined(enablePullDownRefresh ? undefined.call(\\"createPullDownComponent\\", el, location.pathname, framework, handler.PullDownRefresh) : el, pathname + undefined(handler.getQuery(stacksIndex)), {}, loadConfig);
+                                if (params) page.options = params;
+                                handler.load(page, pageConfig, stacksIndex);
                             }
-                            el = (_g = element.default) !== null && _g !== void 0 ? _g : element;
-                            loadConfig = Object.assign({}, pageConfig);
-                            stacksIndex = stack.length;
-                            delete loadConfig[\\"path\\"];
-                            delete loadConfig[\\"load\\"];
-                            page = undefined(enablePullDownRefresh ? undefined.call(\\"createPullDownComponent\\", el, location.pathname, framework, handler.PullDownRefresh) : el, pathname + undefined(handler.getQuery(stacksIndex)), {}, loadConfig);
-                            if (params) page.options = params;
-                            return _context.abrupt(\\"return\\", handler.load(page, pageConfig, stacksIndex));
+                            undefined.trigger(\\"__taroRouterAfterChange\\", {
+                                \\"toLocation\\": {
+                                    \\"path\\": handler.pathname
+                                }
+                            });
 
-                          case 59:
+                          case 52:
                           case \\"end\\":
                             return _context.stop();
                         }

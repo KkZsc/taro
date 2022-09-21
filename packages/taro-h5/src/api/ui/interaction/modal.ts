@@ -1,3 +1,5 @@
+import { Current } from '@tarojs/runtime'
+
 import { inlineStyle } from '../../../utils'
 
 export default class Modal {
@@ -60,6 +62,7 @@ export default class Modal {
     }
   }
 
+  current: string | null
   el: HTMLDivElement
   title: HTMLDivElement
   text: HTMLDivElement
@@ -160,6 +163,9 @@ export default class Modal {
       // show immediately
       document.body.appendChild(this.el)
       setTimeout(() => { this.el.style.opacity = '1' }, 0)
+
+      // Current.page不存在时说明路由还未挂载
+      this.current = Current.page && Current.page.path ? Current.page.path : location.pathname
     })
   }
 
@@ -223,12 +229,16 @@ export default class Modal {
       // show
       this.el.style.display = 'block'
       setTimeout(() => { this.el.style.opacity = '1' }, 0)
+
+      this.current = Current.page && Current.page.path ? Current.page.path : location.pathname
     })
   }
 
   hide () {
     if (this.hideOpacityTimer) clearTimeout(this.hideOpacityTimer)
     if (this.hideDisplayTimer) clearTimeout(this.hideDisplayTimer)
+
+    this.current = null
 
     this.hideOpacityTimer = setTimeout(() => {
       this.el.style.opacity = '0'
