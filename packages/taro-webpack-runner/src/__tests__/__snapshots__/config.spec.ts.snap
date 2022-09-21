@@ -4648,7 +4648,7 @@ exports[`config should build from origin and pipe to output 2`] = `
                                 if (params) page.options = params;
                                 handler.load(page, pageConfig, stacksIndex);
                             }
-                            undefined.trigger(\\"__taroRouterAfterChange\\", {
+                            undefined.trigger(\\"__afterTaroRouterChange\\", {
                                 \\"toLocation\\": {
                                     \\"path\\": handler.pathname
                                 }
@@ -9422,7 +9422,7 @@ I m irrelevant.
                                 if (params) page.options = params;
                                 handler.load(page, pageConfig, stacksIndex);
                             }
-                            undefined.trigger(\\"__taroRouterAfterChange\\", {
+                            undefined.trigger(\\"__afterTaroRouterChange\\", {
                                 \\"toLocation\\": {
                                     \\"path\\": handler.pathname
                                 }
@@ -14196,7 +14196,7 @@ exports[`config should resolved alias 2`] = `
                                 if (params) page.options = params;
                                 handler.load(page, pageConfig, stacksIndex);
                             }
-                            undefined.trigger(\\"__taroRouterAfterChange\\", {
+                            undefined.trigger(\\"__afterTaroRouterChange\\", {
                                 \\"toLocation\\": {
                                     \\"path\\": handler.pathname
                                 }

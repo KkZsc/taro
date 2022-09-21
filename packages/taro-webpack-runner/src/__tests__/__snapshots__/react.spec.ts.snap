@@ -4648,7 +4648,7 @@ exports[`react should build react app 2`] = `
                                 if (params) page.options = params;
                                 handler.load(page, pageConfig, stacksIndex);
                             }
-                            undefined.trigger(\\"__taroRouterAfterChange\\", {
+                            undefined.trigger(\\"__afterTaroRouterChange\\", {
                                 \\"toLocation\\": {
                                     \\"path\\": handler.pathname
                                 }

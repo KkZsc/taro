@@ -4665,7 +4665,7 @@ exports[`css modules should use css modules with global mode 2`] = `
                                 if (params) page.options = params;
                                 handler.load(page, pageConfig, stacksIndex);
                             }
-                            undefined.trigger(\\"__taroRouterAfterChange\\", {
+                            undefined.trigger(\\"__afterTaroRouterChange\\", {
                                 \\"toLocation\\": {
                                     \\"path\\": handler.pathname
                                 }
@@ -9448,7 +9448,7 @@ exports[`css modules should use css modules with module mode 2`] = `
                                 if (params) page.options = params;
                                 handler.load(page, pageConfig, stacksIndex);
                             }
-                            undefined.trigger(\\"__taroRouterAfterChange\\", {
+                            undefined.trigger(\\"__afterTaroRouterChange\\", {
                                 \\"toLocation\\": {
                                     \\"path\\": handler.pathname
                                 }
