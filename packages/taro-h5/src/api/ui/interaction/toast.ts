@@ -1,4 +1,6 @@
-import { inlineStyle } from '../../../utils'
+import { Current } from '@tarojs/runtime'
+
+import { getHomePage,inlineStyle } from '../../../utils'
 
 export default class Toast {
   options = {
@@ -75,6 +77,7 @@ export default class Toast {
     }
   }
 
+  current: string | null
   el: HTMLDivElement
   mask: HTMLDivElement
   icon: HTMLParagraphElement
@@ -150,6 +153,9 @@ export default class Toast {
     // disappear after duration
     config.duration >= 0 && this.hide(config.duration, this.type)
 
+    // Current.page不存在时说明路由还未挂载
+    this.current = Current.page && Current.page.path ? Current.page.path : getHomePage()
+
     return ''
   }
 
@@ -202,6 +208,9 @@ export default class Toast {
 
     // disappear after duration
     config.duration >= 0 && this.hide(config.duration, this.type)
+
+    // Current.page不存在时说明路由还未挂载
+    this.current = Current.page && Current.page.path ? Current.page.path : getHomePage()
 
     return ''
   }

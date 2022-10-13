@@ -114,6 +114,11 @@ export function weixinCorpSupport (apiName) {
   }
 }
 
+export function getHomePage () {
+  const homePage = (window as any).__taroAppConfig?.pages?.[0]
+  return homePage ? '/' + homePage : location.pathname
+}
+
 export function permanentlyNotSupport (apiName) {
   return () => {
     const errMsg = `不支持 API ${apiName}`
