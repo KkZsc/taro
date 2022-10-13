@@ -115,8 +115,13 @@ export function weixinCorpSupport (apiName) {
 }
 
 export function getHomePage () {
-  const homePage = (window as any).__taroAppConfig?.pages?.[0]
-  return homePage ? '/' + homePage : location.pathname
+  const { router } = (window as any).__taroAppConfig
+
+  if (router.mode === 'browser' || router.mode === 'multi') {
+    return router.pathname || location.pathname
+  }
+
+  return router.pathname || location.hash.slice(1)
 }
 
 export function permanentlyNotSupport (apiName) {
