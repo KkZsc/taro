@@ -114,14 +114,31 @@ export function weixinCorpSupport (apiName) {
   }
 }
 
-export function getHomePage () {
-  const { router } = (window as any).__taroAppConfig
 
-  if (router.mode === 'browser' || router.mode === 'multi') {
-    return router.pathname || location.pathname
+function addLeadingSlash (url = '') {
+  return url.charAt(0) === '/' ? url : '/' + url
+}
+
+function hasBasename (path = '', prefix = '') {
+  return new RegExp('^' + prefix + '(\\/|\\?|#|$)', 'i').test(path) || path === prefix
+}
+
+function stripBasename (path = '', prefix = '') {
+  return hasBasename(path, prefix) ? path.substring(prefix.length) : path
+}
+
+export function getHomePage () {
+  const router = (window as any)?.__taroAppConfig?.router
+  const pages = (window as any)?.__taroAppConfig?.pages || []
+  const isBrowserRouteMode = router?.mode === 'browser' || router?.mode === 'multi'
+  const routePath = addLeadingSlash(stripBasename(isBrowserRouteMode ? location.pathname : location.hash.slice(1), router?.basename))
+  const pathname = addLeadingSlash(pages[0])
+
+  if(routePath === '/') {
+    return pathname
   }
 
-  return router.pathname || location.hash.slice(1)
+  return routePath
 }
 
 export function permanentlyNotSupport (apiName) {
