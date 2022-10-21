@@ -114,33 +114,6 @@ export function weixinCorpSupport (apiName) {
   }
 }
 
-
-function addLeadingSlash (url = '') {
-  return url.charAt(0) === '/' ? url : '/' + url
-}
-
-function hasBasename (path = '', prefix = '') {
-  return new RegExp('^' + prefix + '(\\/|\\?|#|$)', 'i').test(path) || path === prefix
-}
-
-function stripBasename (path = '', prefix = '') {
-  return hasBasename(path, prefix) ? path.substring(prefix.length) : path
-}
-
-export function getHomePage () {
-  const router = (window as any)?.__taroAppConfig?.router
-  const pages = (window as any)?.__taroAppConfig?.pages || []
-  const isBrowserRouteMode = router?.mode === 'browser' || router?.mode === 'multi'
-  const routePath = addLeadingSlash(stripBasename(isBrowserRouteMode ? location.pathname : location.hash.slice(1), router?.basename))
-  const pathname = addLeadingSlash(pages[0])
-
-  if(routePath === '/') {
-    return pathname
-  }
-
-  return routePath
-}
-
 export function permanentlyNotSupport (apiName) {
   return () => {
     const errMsg = `不支持 API ${apiName}`
@@ -199,6 +172,33 @@ export function processOpenApi<TOptions = Record<string, unknown>, TResult exten
       return notSupported() as Promise<TResult>
     }
   }
+}
+
+function addLeadingSlash (url = '') {
+  return url.charAt(0) === '/' ? url : '/' + url
+}
+
+function hasBasename (path = '', prefix = '') {
+  return new RegExp('^' + prefix + '(\\/|\\?|#|$)', 'i').test(path) || path === prefix
+}
+
+function stripBasename (path = '', prefix = '') {
+  return hasBasename(path, prefix) ? path.substring(prefix.length) : path
+}
+
+export function getLaunchPage () {
+  const router = (window as any).__taroAppConfig?.router || {}
+  const pages = (window as any).__taroAppConfig?.pages || []
+  const isBrowserRouteMode = router?.mode === 'browser' || router?.mode === 'multi'
+  const entryPath = isBrowserRouteMode ? location.pathname : location.hash.slice(1)
+  const routePath = addLeadingSlash(stripBasename(entryPath.split('?')[0], router?.basename))
+  const pathname = addLeadingSlash(pages[0])
+
+  if(routePath === '/') {
+    return pathname
+  }
+
+  return routePath
 }
 
 export * from './animation'

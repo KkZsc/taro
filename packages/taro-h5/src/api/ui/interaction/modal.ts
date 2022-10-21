@@ -1,6 +1,6 @@
 import { Current } from '@tarojs/runtime'
 
-import { getHomePage,inlineStyle } from '../../../utils'
+import { getLaunchPage,inlineStyle } from '../../../utils'
 
 export default class Modal {
   options = {
@@ -165,7 +165,7 @@ export default class Modal {
       setTimeout(() => { this.el.style.opacity = '1' }, 0)
 
       // Current.page不存在时说明路由还未挂载
-      this.current = Current.page && Current.page.path ? Current.page.path : getHomePage()
+      this.current = Current.page && Current.page.path ? Current.page.path : getLaunchPage()
     })
   }
 
@@ -230,7 +230,7 @@ export default class Modal {
       this.el.style.display = 'block'
       setTimeout(() => { this.el.style.opacity = '1' }, 0)
 
-      this.current = Current.page && Current.page.path ? Current.page.path : getHomePage()
+      this.current = Current.page && Current.page.path ? Current.page.path : getLaunchPage()
     })
   }
 
