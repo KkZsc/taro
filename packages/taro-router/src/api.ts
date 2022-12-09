@@ -43,11 +43,11 @@ async function navigate (option: Option | NavigateBackOption, method: MethodName
     stacks.method = method
     const { success, complete, fail } = option
     const unListen = history.listen(() => {
+      unListen()
       const res = { errMsg: `${method}:ok` }
       success?.(res)
       complete?.(res)
       resolve(res)
-      unListen()
     })
 
     try {
