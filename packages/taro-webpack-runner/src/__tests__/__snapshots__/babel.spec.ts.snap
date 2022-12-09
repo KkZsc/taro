@@ -3419,13 +3419,13 @@ exports[`babel should convert do expressions 2`] = `
                             stack.method = method;
                             var success = option.success, complete = option.complete, fail = option.fail;
                             var unListen = history_history.listen((function() {
+                                unListen();
                                 var res = {
                                     \\"errMsg\\": \\"\\".concat(method, \\":ok\\")
                                 };
                                 success === null || success === void 0 ? void 0 : success(res);
                                 complete === null || complete === void 0 ? void 0 : complete(res);
                                 resolve(res);
-                                unListen();
                             }));
                             try {
                                 if (\\"url\\" in option) {

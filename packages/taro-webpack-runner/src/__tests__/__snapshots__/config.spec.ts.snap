@@ -3426,13 +3426,13 @@ exports[`config should build from origin and pipe to output 2`] = `
                             stack.method = method;
                             var success = option.success, complete = option.complete, fail = option.fail;
                             var unListen = history_history.listen((function() {
+                                unListen();
                                 var res = {
                                     \\"errMsg\\": \\"\\".concat(method, \\":ok\\")
                                 };
                                 success === null || success === void 0 ? void 0 : success(res);
                                 complete === null || complete === void 0 ? void 0 : complete(res);
                                 resolve(res);
-                                unListen();
                             }));
                             try {
                                 if (\\"url\\" in option) {
@@ -8289,13 +8289,13 @@ I m irrelevant.
                             stack.method = method;
                             var success = option.success, complete = option.complete, fail = option.fail;
                             var unListen = history_history.listen((function() {
+                                unListen();
                                 var res = {
                                     \\"errMsg\\": \\"\\".concat(method, \\":ok\\")
                                 };
                                 success === null || success === void 0 ? void 0 : success(res);
                                 complete === null || complete === void 0 ? void 0 : complete(res);
                                 resolve(res);
-                                unListen();
                             }));
                             try {
                                 if (\\"url\\" in option) {
@@ -13152,13 +13152,13 @@ exports[`config should resolved alias 2`] = `
                             stack.method = method;
                             var success = option.success, complete = option.complete, fail = option.fail;
                             var unListen = history_history.listen((function() {
+                                unListen();
                                 var res = {
                                     \\"errMsg\\": \\"\\".concat(method, \\":ok\\")
                                 };
                                 success === null || success === void 0 ? void 0 : success(res);
                                 complete === null || complete === void 0 ? void 0 : complete(res);
                                 resolve(res);
-                                unListen();
                             }));
                             try {
                                 if (\\"url\\" in option) {
