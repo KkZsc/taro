@@ -27,7 +27,7 @@ interface PickerViewProps extends StandardProps {
   maskClass?: string
 
   /** 是否在手指松开时立即触发 change 事件。若不开启则会在滚动动画结束后触发 change 事件。
-   * @supported weapp, tt
+   * @supported weapp, alipay, tt
    * @default false
    */
   immediateChange?: boolean

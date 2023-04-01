@@ -187,13 +187,6 @@ interface InputProps extends StandardProps, FormItemProps {
    */
   alwaysSystem?: boolean
 
-  /** 使用原生键盘
-   * @default true
-   * @supported alipay
-   * @ignore
-   */
-  enableNative?: boolean
-
   /** 无障碍访问，（属性）元素的额外描述
    * @supported qq
    */
@@ -224,6 +217,11 @@ interface InputProps extends StandardProps, FormItemProps {
    * @supported weapp, qq
    */
   onKeyboardHeightChange?: CommonEventFunction<InputProps.onKeyboardHeightChangeEventDetail>
+
+  /** 用户昵称审核完毕后触发，仅在 type 为 "nickname" 时有效，event.detail = { pass, timeout }
+   * @supported weapp
+   */
+  onNickNameReview?: CommonEventFunction
 }
 declare namespace InputProps {
   /** Input 类型 */

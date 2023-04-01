@@ -55,7 +55,7 @@ interface ScrollViewProps extends StandardProps {
   enableBackToTop?: boolean
 
   /** 启用 flexbox 布局。开启后，当前节点声明了 `display: flex` 就会成为 flex container，并作用于其孩子节点。
-   * @supported weapp, jd
+   * @supported weapp
    * @default false
    */
   enableFlex?: boolean
@@ -243,6 +243,7 @@ declare namespace ScrollViewProps {
     scrollWidth: number
     deltaX: number
     deltaY: number
+    isDrag?: boolean
   }
   interface onDragDetail {
     /** 横向滚动条位置 */

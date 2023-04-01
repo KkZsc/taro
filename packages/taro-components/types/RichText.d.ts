@@ -11,7 +11,7 @@ interface RichTextProps extends StandardProps {
   nodes?: Nodes
 
   /** 显示连续空格
-   * @supported weapp, qq, rn
+   * @supported weapp, alipay, qq, rn
    */
   space?: keyof RichTextProps.TSpace
 
